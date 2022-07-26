@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "468927522979",
+    "project_id": "coworkingtracker",
+    "storage_bucket": "coworkingtracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:468927522979:android:58268f339268ac7fb3f716",
+        "android_client_info": {
+          "package_name": "com.example.cowork"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "468927522979-s401paf1ljv3j36l41k4qiov4eeg9gcg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_HdAx4XyXTfUBEYaSuFvbkbA-vIprLUw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "468927522979-s401paf1ljv3j36l41k4qiov4eeg9gcg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
