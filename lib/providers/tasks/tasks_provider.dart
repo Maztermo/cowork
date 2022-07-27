@@ -20,17 +20,17 @@ class TasksController extends StateNotifier<TasksState> {
     state = state.copyWith(tasks: tasks);
   }
 
-  uploadTask(Task newTask) async {
+  Future uploadTask(Task newTask) async {
     await taskRepo.uploadTask(task: newTask);
     downloadTasks(); // to keep it all updated
   }
 
-  updateTask(Task updatedTask, String id) async {
+  Future updateTask(Task updatedTask, String id) async {
     await taskRepo.updateTask(task: updatedTask, id: id);
     downloadTasks(); // to keep it all updated
   }
 
-  deleteTask(String id) async {
+  Future deleteTask(String id) async {
     await taskRepo.deleteTask(id: id);
     downloadTasks();
   }

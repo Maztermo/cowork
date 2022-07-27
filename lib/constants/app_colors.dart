@@ -6,4 +6,7 @@ class AppColors {
   static const Color green = Color(0xFF52796F);
   static const Color lightGreen = Color(0xFF84A98C);
   static const Color whiteGreen = Color(0xFFCAD2C5);
+
+  static const Color smallPill = Color(0xFF84A98C);
+  static const Color largePill = Color(0xFFBA8446);
 }

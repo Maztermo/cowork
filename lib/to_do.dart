@@ -2,20 +2,22 @@
 /// X Dynamic color change on taskSizePill
 /// X TaskSize enum
 /// X Make OverViewColumn Scrollable in prep for dynamic loading
+/// X Move the taskSizePill to the left and make it a colored dot instead?
+/// X: Errorhandling on login and register screen.
 /// TODO: Dynamically underline current "page/tab"
-/// TODO: Errorhandling on login and register screen.
-/// TODO: Move the taskSizePill to the left and make it a colored dot instead?
 /// TODO: find a location for the sign out button
+/// TODO: add a onHover effect to navBar buttons (underlining would be cool)
+/// TODO: make button on Mytaskpage prettier / format correctly
 
 
 /// ----------- Larger tasks:
-/// TODO: Think about simple db architecture
 /// X Set up firebase with dummy data
 /// X: yoink login system from old project
-/// TODO: Design "My page" tab.
+/// TODO: Think about simple db architecture
+/// X Design "My page" tab.
 /// TODO: Design a "members / community tab".
 /// TODO: Build said tabs^
-/// TODO: Dry run with myself as user.
+/// X Dry run with myself as user.
 /// TODO: community functions - a code to use upon signup?
 /// TODO: "who" can create communities? admin users?
 /// TODO: Get feedback / input.

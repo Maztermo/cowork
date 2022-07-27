@@ -17,33 +17,30 @@ class TaskListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Default as green
-    Color pillColor = const Color(0xFF84A98C);
-    switch (taskSize) {
-      case "small":
-        pillColor = const Color(0xFF84A98C);
-        break;
-      case "medium":
-        pillColor = const Color.fromARGB(255, 135, 174, 232);
-        break;
-      case "large":
-        pillColor = const Color(0xFFBA8446);
-        break;
-
-      default:
-        pillColor = const Color(0xFF84A98C);
-    }
+    Color pillColor = AppColors.smallPill;
+    if (taskSize == 'large') pillColor = AppColors.largePill;
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       constraints: const BoxConstraints(maxWidth: 1200),
-      height: 80,
+      height: 70,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: AppColors.darkGreen, width: 5),
+        border: Border.all(color: AppColors.darkGreen, width: 2.5),
       ),
       child: Center(
         child: Row(
           children: [
+            // Task size pill
+            Container(
+              width: 24,
+              height: 24,
+              decoration: BoxDecoration(
+                color: pillColor,
+                borderRadius: BorderRadius.circular(20),
+              ),
+            ),
+            const SizedBox(width: 24),
             Expanded(
               child: Text(
                 // TODO: add a if more than x chars then add ... manually to avoid elipsis bug
@@ -56,28 +53,17 @@ class TaskListTile extends StatelessWidget {
 
             // Username + Icon
             SizedBox(
-                width: 340,
+                width: 200,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Task size pill
-                    Container(
-                      width: 124,
-                      height: 34,
-                      decoration: BoxDecoration(
-                        color: pillColor,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Center(
-                        child: Text(
-                          taskSize,
-                          style: AppStyles.style5WhiteGreen,
-                        ),
-                      ),
-                    ),
-                    const Spacer(),
                     // User name
-                    Text(username, style: AppStyles.style4darkGreen),
+                    SizedBox(
+                      width: 100,
+                      child: FittedBox(
+                          child:
+                              Text(username, style: AppStyles.style4darkGreen)),
+                    ),
                     const SizedBox(width: 16),
                     // Icon
                     const Icon(

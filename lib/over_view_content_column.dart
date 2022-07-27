@@ -48,7 +48,7 @@ class OverViewContentColumn extends ConsumerWidget {
                               taskSize: task.taskSize,
                               username: task.userName,
                             ),
-                            const SizedBox(height: 40)
+                            const SizedBox(height: 30)
                           ],
                         );
                       })),
@@ -57,59 +57,3 @@ class OverViewContentColumn extends ConsumerWidget {
     );
   }
 }
-
-//  ListView(
-//               children: const [
-//                 TaskListTile(
-//                     taskTitle: "Fixing discord bot reply bug",
-//                     taskSize: TaskSize.small,
-//                     username: "Dazinmatru"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle:
-//                         "Last touches to design update that client has been nagging me about",
-//                     taskSize: TaskSize.small,
-//                     username: "Sleepy"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Making a new and improved C++(ultra)",
-//                     taskSize: TaskSize.large,
-//                     username: "Jaycob"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Cleaning up my kitchen",
-//                     taskSize: TaskSize.small,
-//                     username: "Maztermo"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Taking over the company I'm working for",
-//                     taskSize: TaskSize.medium,
-//                     username: "Han"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Fixing discord bot reply bug",
-//                     taskSize: TaskSize.small,
-//                     username: "Dazinmatru"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle:
-//                         "Last touches to design update that client has been nagging me about",
-//                     taskSize: TaskSize.small,
-//                     username: "Sleepy"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Making a new and improved C++(ultra)",
-//                     taskSize: TaskSize.large,
-//                     username: "Jaycob"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Cleaning up my kitchen",
-//                     taskSize: TaskSize.small,
-//                     username: "Maztermo"),
-//                 SizedBox(height: 40),
-//                 TaskListTile(
-//                     taskTitle: "Taking over the company I'm working for",
-//                     taskSize: TaskSize.medium,
-//                     username: "Han"),
-//               ],
-//             ),

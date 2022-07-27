@@ -1,18 +1,17 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cowork/constants/app_colors.dart';
 import 'package:cowork/constants/app_styles.dart';
-import 'package:cowork/providers/tasks/user/user_provider.dart';
+import 'package:cowork/providers/tabs/tabs_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class LeftNavColumn extends StatelessWidget {
+class LeftNavColumn extends ConsumerWidget {
   const LeftNavColumn({
     Key? key,
   }) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Container(
         color: AppColors.darkGreen,
         width: 440,
@@ -26,13 +25,21 @@ class LeftNavColumn extends StatelessWidget {
               //const SizedBox(height: 10),
               Text("@tomatoFam", style: AppStyles.style3Orange),
               const SizedBox(height: 40),
-              UsernameTextField(),
+              TextButton(
+                  onPressed: () =>
+                      ref.read(tabsController.notifier).goToPage(0),
+                  child: Text("My Tasks", style: AppStyles.style3WhiteThin)),
               const SizedBox(height: 30),
-              Text("Overview", style: AppStyles.style3WhiteThin),
+              TextButton(
+                  onPressed: () =>
+                      ref.read(tabsController.notifier).goToPage(1),
+                  child: Text("Everybody's Tasks",
+                      style: AppStyles.style3WhiteThin)),
               const SizedBox(height: 30),
-              Text("Members", style: AppStyles.style3WhiteThin),
-              const SizedBox(height: 30),
-              Text("Stream mode", style: AppStyles.style3WhiteThin),
+              TextButton(
+                  onPressed: () => ref.read(tabsController.notifier).goToPage(
+                      2), // TODO: add a third page and then update index
+                  child: Text("Members", style: AppStyles.style3WhiteThin)),
               const SizedBox(height: 30),
               TextButton(
                 onPressed: () {
@@ -43,41 +50,5 @@ class LeftNavColumn extends StatelessWidget {
             ],
           ),
         ));
-  }
-}
-
-class UsernameTextField extends ConsumerWidget {
-  UsernameTextField({
-    Key? key,
-  }) : super(key: key);
-
-  final TextEditingController controller = TextEditingController();
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    print(ref.watch(userProvider).userName);
-    controller.text = ref.watch(userProvider).userName;
-    return Focus(
-      onFocusChange: (gainFocus) {
-        if (!gainFocus) {
-          FirebaseFirestore.instance
-              .collection("users")
-              .doc(FirebaseAuth.instance.currentUser?.uid)
-              .set({"userName": controller.text});
-        }
-      },
-      child: TextFormField(
-        decoration: InputDecoration(
-            label: Text(
-          "Username",
-        )),
-        controller: controller,
-        style: AppStyles.style3WhiteThin,
-        onFieldSubmitted: (value) => FirebaseFirestore.instance
-            .collection("users")
-            .doc(FirebaseAuth.instance.currentUser?.uid)
-            .set({"userName": value}),
-      ),
-    );
   }
 }

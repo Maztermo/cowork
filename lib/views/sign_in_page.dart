@@ -53,11 +53,12 @@ class _SignInPageState extends State<SignInPage> {
                       decoration: const InputDecoration(
                         hintText: 'Email',
                       ),
-                      validator: (value) =>
-                          value!.isEmpty ? 'Enter an email' : null,
+                      validator: (value) {
+                        if (value!.isEmpty) return 'Enter an email';
+                      },
                       onChanged: (value) {
                         setState(() {
-                          email = value;
+                          email = value.trim();
                         });
                       },
                     ),
@@ -89,12 +90,39 @@ class _SignInPageState extends State<SignInPage> {
                             primary: AppColors.darkGreen),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            UserCredential? result;
-                            result = await FirebaseAuth.instance
-                                .createUserWithEmailAndPassword(
-                              email: email.trim(),
-                              password: password.trim(),
-                            );
+                            String errorMessage;
+                            try {
+                              UserCredential result = await FirebaseAuth
+                                  .instance
+                                  .createUserWithEmailAndPassword(
+                                email: email.trim(),
+                                password: password.trim(),
+                              );
+                            } on FirebaseAuthException catch (e) {
+                              print('Failed with error code: ${e.code}');
+                              print(e.message);
+                              switch (e.code) {
+                                case "invalid-email":
+                                  errorMessage = "Invalid email";
+                                  break;
+                                case "user-not-found":
+                                  errorMessage = "Incorrect email or password";
+                                  break;
+                                case "wrong-password":
+                                  errorMessage = "Incorrect email or password";
+                                  break;
+                                default:
+                                  errorMessage = "Something went wrong";
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      backgroundColor:
+                                          Colors.red.withOpacity(0.4),
+                                      content: Text(
+                                        errorMessage,
+                                        style: AppStyles.style5WhiteThin,
+                                      )));
+                            }
                           }
                         },
                         child: Text(
@@ -190,11 +218,39 @@ class _SignInPageState extends State<SignInPage> {
                             primary: AppColors.darkGreen),
                         onPressed: () async {
                           if (_formKey.currentState!.validate()) {
-                            final UserCredential signInResult =
-                                await FirebaseAuth.instance
-                                    .signInWithEmailAndPassword(
-                                        email: email, password: password);
-                            print(signInResult);
+                            String errorMessage;
+                            try {
+                              UserCredential result = await FirebaseAuth
+                                  .instance
+                                  .signInWithEmailAndPassword(
+                                email: email.trim(),
+                                password: password.trim(),
+                              );
+                            } on FirebaseAuthException catch (e) {
+                              print('Failed with error code: ${e.code}');
+                              print(e.message);
+                              switch (e.code) {
+                                case "invalid-email":
+                                  errorMessage = "Invalid email";
+                                  break;
+                                case "user-not-found":
+                                  errorMessage = "Incorrect email or password";
+                                  break;
+                                case "wrong-password":
+                                  errorMessage = "Incorrect email or password";
+                                  break;
+                                default:
+                                  errorMessage = "Something went wrong";
+                              }
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                      backgroundColor:
+                                          Colors.red.withOpacity(0.6),
+                                      content: Text(
+                                        errorMessage,
+                                        style: AppStyles.style5WhiteThin,
+                                      )));
+                            }
                           }
                         },
                         child: const Text(

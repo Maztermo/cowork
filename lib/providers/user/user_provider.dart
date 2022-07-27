@@ -1,6 +1,7 @@
-import 'package:cowork/providers/tasks/user/user_state.dart';
 import 'package:cowork/repositories/user_repository.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'user_state.dart';
 
 final userProvider =
     StateNotifierProvider.autoDispose<UserController, UserState>((ref) {
